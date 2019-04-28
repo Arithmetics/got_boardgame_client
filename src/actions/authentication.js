@@ -20,7 +20,7 @@ export const registerUser = (user, history) => dispatch => {
 }
 
 export const loginUser = (user) => dispatch => {
-    axios.post('http://192.168.0.48:8000/api/user/login', user, config)
+    axios.post('http://localhost:8000/api/user/login', user, config)
             .then(res => {
                 console.log(res)
                 const token  = res.data && res.data.user && res.data.user.token;

@@ -16,17 +16,16 @@ class Register extends Component {
             password_confirm: '',
             errors: {}
         }
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
-    handleInputChange(e) {
+    handleInputChange =(e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
-    handleSubmit(e) {
+    handleSubmit = (e) => {
         e.preventDefault();
         const user = {
             name: this.state.name,
@@ -122,11 +121,6 @@ class Register extends Component {
         )
     }
 }
-
-Register.propTypes = {
-    registerUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
-};
 
 const mapStateToProps = state => ({
     auth: state.auth,
