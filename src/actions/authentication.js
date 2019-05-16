@@ -8,8 +8,8 @@ const config = {
   };
   
 
-export const registerUser = (user, history) => dispatch => {
-    axios.post('localhost:8000/api/users/new', user)
+export const registerUser = (user) => dispatch => {
+    axios.post('http://localhost:8000/api/user/new', user, config)
             .then()
             .catch(err => {
                 dispatch({
@@ -22,15 +22,16 @@ export const registerUser = (user, history) => dispatch => {
 export const loginUser = (user) => dispatch => {
     axios.post('http://localhost:8000/api/user/login', user, config)
             .then(res => {
-                console.log(res)
                 const token  = res.data && res.data.user && res.data.user.token;
                 if (typeof token !== 'undefined') {
                   localStorage.setItem('jwtToken', token);
                   setAuthToken(token);
                   const decoded = jwt_decode(token);
-                  dispatch(setCurrentUser(decoded));
+                  const updater = {}
+                  updater.decoded = decoded
+                  updater.user = res.data && res.data.user
+                  dispatch(setCurrentUser(updater));
                 } else {
-                  console.log("could dispatch handled error here")
                   dispatch({
                     type: GET_ERRORS,
                     payload: res.data && res.data.message
@@ -38,7 +39,6 @@ export const loginUser = (user) => dispatch => {
                 }
             })
             .catch(err => {
-                console.log(err)
                 dispatch({
                     type: GET_ERRORS,
                     payload: err.response
@@ -46,10 +46,10 @@ export const loginUser = (user) => dispatch => {
             });
 }
 
-export const setCurrentUser = decoded => {
+export const setCurrentUser = (updater) => {
     return {
         type: SET_CURRENT_USER,
-        payload: decoded
+        payload: updater
     }
 }
 

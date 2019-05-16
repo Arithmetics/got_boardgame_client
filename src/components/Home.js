@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { getUser } from '../actions/user';
+import GameDash from './GameDash';
 
-export default class Home extends Component {
-    render() {
-        return (
-            <div>
-                Home Component
-            </div>
-        );
-    }
+class Home extends Component {
+
+  componentDidMount() {
+    this.props.getUser()
+  }
+
+  render() {
+    const { user } = this.props
+    return (
+      <div>
+        Home Component
+        <GameDash user={user.currentUser}/>
+      </div>
+    );
+  }
 }
+
+const mapStateToProps = state => ({
+  user: state.user,
+  errors: state.errors
+});
+
+
+export default connect(mapStateToProps,{ getUser })(withRouter(Home))
