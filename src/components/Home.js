@@ -14,7 +14,6 @@ class Home extends Component {
     const { user } = this.props
     return (
       <div>
-        Home Component
         <GameDash user={user.currentUser}/>
       </div>
     );
