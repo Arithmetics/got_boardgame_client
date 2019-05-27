@@ -11,6 +11,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Home from './components/Home';
 import Game from './components/Game';
+import CreateGame from './components/CreateGame';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -35,7 +36,8 @@ class App extends Component {
           <div>
             <Navbar />
             <Route exact path="/" component={ Home } />
-            <Route path="/game/:id" component={ Game } />
+            <Route exact path="/game/new" component={ CreateGame } />
+            <Route path="/game/:id(\d+)" component={ Game } />
             <div className="container">
               <Route exact path="/register" component={ Register } />
               <Route exact path="/login" component={ Login } />

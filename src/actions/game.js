@@ -8,10 +8,21 @@ const config = {
   }
 };
 
+export const createGame = (game) => dispatch => {
+  axios.post('http://localhost:8000/api/game/new', game, config)
+          .then(
 
+          )
+          .catch(err => {
+              dispatch({
+                  type: GET_ERRORS,
+                  payload: err.response.data
+              });
+          });
+}
 
-export const getGame = () => dispatch => {
-  axios.get('http://localhost:8000/api/game/me', config)
+export const getGame = (id) => dispatch => {
+  axios.get(`http://localhost:8000/api/game/${id}`, config)
           .then(res => {
               const data  = res.data
               dispatch({

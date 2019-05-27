@@ -10,7 +10,9 @@ const config = {
 
 export const registerUser = (user) => dispatch => {
     axios.post('http://localhost:8000/api/user/new', user, config)
-            .then()
+            .then(
+
+            )
             .catch(err => {
                 dispatch({
                     type: GET_ERRORS,
