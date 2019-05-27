@@ -26,7 +26,7 @@ export default class GameDash extends Component {
     console.log(joinedGames)
     return(
       <div className="gamedash-container">
-      <Link to="/game/new">Sign Up</Link>
+      <Link to="/game/new">Create New Game</Link>
         <div className="gamedash-column">
           <h2>Pending Games:</h2>
           {pendingGames && pendingGames.map(game => {
