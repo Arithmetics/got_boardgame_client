@@ -10,6 +10,7 @@ class GameIcon extends Component {
       <div className="gameicon-container">
         <h3>{game.name}</h3>
         <h3>{game.started}</h3>
+        <Link to={`/game/${game.ID}`}>Go to Game</Link> 
       </div>
     )
   }

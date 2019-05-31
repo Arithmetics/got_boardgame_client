@@ -1,7 +1,7 @@
 import { GET_GAME } from '../actions/types';
 
 const initialState = {
-    game: {}
+    selectedGame: {}
 }
 
 export default function(state = initialState, action ) {
@@ -9,7 +9,7 @@ export default function(state = initialState, action ) {
         case GET_GAME:
             return {
                 ...state,
-                selectedGAme: action.payload.data
+                selectedGame: action.payload.data
             }
         default: 
             return state;

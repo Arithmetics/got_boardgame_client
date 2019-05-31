@@ -24,6 +24,7 @@ export const createGame = (game) => dispatch => {
 export const getGame = (id) => dispatch => {
   axios.get(`http://localhost:8000/api/game/${id}`, config)
           .then(res => {
+            console.log(res)
               const data  = res.data
               dispatch({
                 type: GET_GAME,

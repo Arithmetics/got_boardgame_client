@@ -11,9 +11,28 @@ class Game extends Component {
   }
 
   render() {
-    return (
-      <h1>Game here {JSON.stringify(this.props.match.params)}</h1>
-    )
+    const selectedGame = this.props.game && this.props.game.selectedGame
+    const players = selectedGame && selectedGame.players || []
+    if (selectedGame) {
+      return (
+        <div>
+          <h1>{selectedGame.name}</h1>
+          <ul>
+            {players.map((player) => {
+              return (
+                <li>{player.name}</li>
+              )
+            })}
+          </ul>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <p>No game found</p>
+        </div>
+      )
+    }
   }
 }
 
