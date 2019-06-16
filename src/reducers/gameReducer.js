@@ -1,7 +1,8 @@
-import { GET_GAME } from '../actions/types';
+import { GET_GAME, GET_GAMES } from '../actions/types';
 
 const initialState = {
-    selectedGame: {}
+    selectedGame: {},
+    allGames: {}
 }
 
 export default function(state = initialState, action ) {
@@ -10,6 +11,18 @@ export default function(state = initialState, action ) {
             return {
                 ...state,
                 selectedGame: action.payload.data
+            }
+        default: 
+            return state;
+    }
+}
+
+export default function(state = initialState, action ) {
+    switch(action.type) {
+        case GET_GAMES:
+            return {
+                ...state,
+                allGames: action.payload.data
             }
         default: 
             return state;

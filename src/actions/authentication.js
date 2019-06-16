@@ -8,17 +8,17 @@ const config = {
   };
   
 
-export const registerUser = (user) => dispatch => {
-    axios.post('http://localhost:8000/api/user/new', user, config)
-            .then(
-
-            )
-            .catch(err => {
-                dispatch({
-                    type: GET_ERRORS,
-                    payload: err.response.data
-                });
-            });
+export const registerUser = (user, history) => dispatch => {
+  axios.post('http://localhost:8000/api/user/new', user, config)
+    .then(
+      history.push('/')
+    )
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+  });
 }
 
 export const loginUser = (user) => dispatch => {

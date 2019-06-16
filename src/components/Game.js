@@ -12,7 +12,7 @@ class Game extends Component {
 
   render() {
     const selectedGame = this.props.game && this.props.game.selectedGame
-    const players = selectedGame && selectedGame.players || []
+    const players = (selectedGame && selectedGame.players) || []
     if (selectedGame) {
       return (
         <div>

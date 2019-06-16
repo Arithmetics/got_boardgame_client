@@ -6,7 +6,6 @@ import setAuthToken from './setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authentication';
 import { Provider } from 'react-redux';
 import store from './store';
-import Navbar from './components/Navbar';
 import Register from './components/Register';
 import Login from './components/Login';
 import Home from './components/Home';
@@ -15,6 +14,9 @@ import CreateGame from './components/CreateGame';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import TopNavbar from './components/TopNavbar';
+
+import { Classes } from "@blueprintjs/core";
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -33,8 +35,8 @@ class App extends Component {
     return (
       <Provider store = { store }>
         <Router>
-          <div>
-            <Navbar />
+          <div className={Classes.DARK}>
+            <TopNavbar />
             <Route exact path="/" component={ Home } />
             <Route exact path="/game/new" component={ CreateGame } />
             <Route path="/game/:id(\d+)" component={ Game } />
